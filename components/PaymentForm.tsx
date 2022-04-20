@@ -15,6 +15,7 @@ export default function PaymentForm({
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
   )
+
   return (
     <div className="w-7xl mx-auto grid max-w-7xl grid-cols-1 gap-x-10 px-5 tracking-wider text-slate-600 md:grid-cols-[2fr_1fr]">
       <div className="w-full md:w-full">
