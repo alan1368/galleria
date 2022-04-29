@@ -1,10 +1,10 @@
 import Image from 'next/image'
 export default function Hero() {
   return (
-    <div className="w-7xl group relative -z-10 mb-10 -mt-20 h-[45rem] max-w-7xl">
-      <Image src="/hero1.jpg" layout="fill" className="absolute" />
+    <div className="w-7xl group relative -z-10 -mb-52 -mt-20 h-[45rem] max-w-7xl md:mb-40">
+      <Image src="/hero1.jpg" width={2400} height={1596} />
 
-      <div className="absolute top-52 left-20 z-50">
+      <div className="top-52 left-20 z-50 hidden md:absolute">
         <h2 className=" font-cinzel text-lg text-slate-700">
           Lorem ipsum dolor sit amet <br /> consectetur, adipisicing elit.{' '}
           <br />

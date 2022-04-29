@@ -28,13 +28,10 @@ export default function women({ products }: any) {
         </ul>
       </div>
       <div>
-        <Image
-          src="/women-hero.jpg"
-          width={1000}
-          height={500}
-          objectFit="fill"
-        />
-        <div className="flex p-5">
+        <div className="hidden md:block">
+          <Image src="/women-hero.jpg" width={4032} height={3024} />
+        </div>
+        <div className="flex flex-col p-5 md:flex-row">
           {products.map((product: any) => {
             return <Product products={product} key={product.permalink} />
           })}

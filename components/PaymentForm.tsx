@@ -10,7 +10,6 @@ export default function PaymentForm({
   nextStep,
 }: any) {
   const { line_items, subtotal, total_items } = useCartState()
-  const [publishableKey, setPublishableKey] = useState('')
 
   const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY

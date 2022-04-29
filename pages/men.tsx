@@ -4,7 +4,7 @@ import Product from '../components/Product'
 
 export default function women({ products }: any) {
   return (
-    <div className="w-7xl mx-auto mb-10 grid max-w-7xl grid-cols-[auto_1fr] px-5">
+    <div className=" mx-auto mb-10 grid max-w-7xl grid-cols-[auto_1fr] px-5">
       <div className="w-48 pt-8 ">
         <ul className=" w-fit space-y-2 font-stick text-lg font-light">
           <li className="mr-3 hover:cursor-pointer hover:text-yellow-800">
@@ -28,8 +28,10 @@ export default function women({ products }: any) {
         </ul>
       </div>
       <div>
-        <Image src="/men-hero.jpg" width={1000} height={500} objectFit="fill" />
-        <div className="flex p-5">
+        <div className="hidden md:block">
+          <Image src="/men-hero.jpg" width={7360} height={4912} />
+        </div>
+        <div className="flex flex-col p-5 md:flex-row">
           {products.map((product: any) => {
             return <Product products={product} key={product.permalink} />
           })}

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import commerce from '../lib/commerce'
 import { useCartDispatch } from '../context/cart'
 
@@ -10,6 +10,7 @@ export default function ProductPage({ product, cart }: any) {
     const colorInfo = { key: '', value: '' }
     colorInfo.key = option.name
     colorInfo.value = option.id
+
     return colorInfo
   })
   const sizeVariants = variant_groups[1].options.map((option: any) => {
@@ -56,12 +57,13 @@ export default function ProductPage({ product, cart }: any) {
       window.alert('Please Select color and size')
     }
   }
+
   return (
     <div className="mx-auto mt-10 grid w-11/12 max-w-7xl grid-rows-2 md:grid-cols-[60%_40%]">
       <div className="grid h-96 grid-cols-2">
         {assets.map((asset: any) => {
           return (
-            <div className="relative">
+            <div className="relative" key={asset.id}>
               <Image src={asset.url} layout="fill" objectFit="contain" />
             </div>
           )
@@ -73,20 +75,22 @@ export default function ProductPage({ product, cart }: any) {
         <p className="font-extralight ">{description}</p>
         <div className="mb-5">
           <p>Color:</p>
-          <div className="mt-2 flex space-x-2">
+          <div className="mt-2 flex space-x-10">
             {colorVariants.map((option: any) => {
               const { key, value } = option
               const col = key.toLowerCase()
               return (
                 <div
                   id={value}
-                  className={`h-6 w-6 rounded-full bg-${col}
+                  className={`bg w-16 rounded-sm p-2 
                    hover:cursor-pointer ${
-                     color === value && 'border-2 border-black'
+                     color === value && `border-2 border-slate-500`
                    }`}
                   onClick={colorHandler}
                   key={value}
-                ></div>
+                >
+                  {col}
+                </div>
               )
             })}
           </div>

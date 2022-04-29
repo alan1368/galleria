@@ -6,6 +6,7 @@ export default function Navbar() {
   const { total_items } = useCartState()
   const [navColor, setNavColor] = useState(0)
   const [menu, setMenu] = useState(false)
+
   useEffect(() => {
     window.addEventListener('scroll', (e) => {
       setNavColor(window.scrollY)
@@ -43,7 +44,7 @@ export default function Navbar() {
         </svg>
       </button>
       {menu && (
-        <div className="fixed top-20 left-0 h-56 w-1/2 rounded-sm bg-slate-100 pl-5 shadow-sm md:hidden">
+        <div className="absolute top-20 left-0 z-50 h-56 w-1/2 rounded-sm bg-slate-100 pl-5 shadow-sm md:hidden">
           <ul className="space-y-4 ">
             <Link href="/women">
               <li className="underline-offset-4 hover:cursor-pointer hover:underline  ">
@@ -107,9 +108,9 @@ export default function Navbar() {
         </Link>
         <Link href="/cart">
           <div className="relative ml-14 inline-block h-8 w-8 hover:cursor-pointer">
-            {total_items > 0 && (
+            {total_items! > 0 && (
               <div className="absolute flex h-7 w-7 items-center justify-center rounded-full bg-slate-600 bg-opacity-70 text-sm text-white">
-                {total_items}
+                {total_items!}
               </div>
             )}
 
