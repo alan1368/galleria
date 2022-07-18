@@ -1,5 +1,11 @@
 import commerce from '../lib/commerce'
-import { createContext, useReducer, useContext, useEffect } from 'react'
+import {
+  createContext,
+  useReducer,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 
 const CartStateContext = createContext()
 const CartDispatchContext = createContext()
@@ -20,11 +26,12 @@ const reducer = (state, action) => {
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const dependency = state && state?.cart?.updated
+  console.log('state in cartjs', state)
   useEffect(() => {
     getCart()
-  }, [])
+  }, [dependency])
 
-  const setCart = (payload) => dispatch({ type: SET_CART, payload })
   const getCart = async () => {
     try {
       const cart = await commerce.cart.retrieve()
@@ -33,6 +40,9 @@ export const CartProvider = ({ children }) => {
       console.log(err)
     }
   }
+
+  const setCart = (payload) => dispatch({ type: SET_CART, payload })
+
   return (
     <CartDispatchContext.Provider value={{ setCart }}>
       <CartStateContext.Provider value={state}>
